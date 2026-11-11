@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sabores de Moçambique — blog de gastronomia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF4F2;--surface:#FFFFFF;--ink:#14272B;--muted:#4C6469;--line:#CFDDD9;
+  --sea:#0F5C63;--chili:#C42B1B;--gold:#E3A72F;--on-sea:#F2FAF8;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1B1D;--surface:#162A2D;--ink:#E8F2EF;--muted:#9DB5B1;--line:#2A4448;--sea:#1B7F88;--chili:#F0604D;--gold:#EDB94B;--on-sea:#F2FAF8;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0E1B1D;--surface:#162A2D;--ink:#E8F2EF;--muted:#9DB5B1;--line:#2A4448;--sea:#1B7F88;--chili:#F0604D;--gold:#EDB94B;--on-sea:#F2FAF8;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 "Source Serif 4",Georgia,serif}
+h1,h2,h3,.sans{font-family:"Bricolage Grotesque",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+/* capulana band */
+.capulana{height:22px;background:
+ repeating-linear-gradient(90deg,var(--chili) 0 28px,var(--gold) 28px 40px,var(--sea) 40px 68px,var(--ink) 68px 74px)}
+header.top{background:var(--sea);color:var(--on-sea)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.01em;text-decoration:none}
+.nav a.sans{font-size:15px;opacity:.9;text-decoration:none}
+.hero{padding:44px 0 56px}
+.hero h1{font-size:clamp(40px,9vw,84px);line-height:.98;margin:0 0 18px;letter-spacing:-.03em;font-weight:800;max-width:12ch}
+.hero p{max-width:46ch;font-size:20px;margin:0;opacity:.95}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:34px 0 22px}
+.filters button{font:600 15px "Bricolage Grotesque",sans-serif;border:2px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 16px;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--chili);border-color:var(--chili);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px;padding-bottom:40px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.card .swatch{height:120px;display:flex;align-items:flex-end;padding:12px 16px;font-size:44px}
+.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h2{font-size:24px;line-height:1.15;margin:0;letter-spacing:-.01em}
+.meta{font:500 14px "Bricolage Grotesque",sans-serif;color:var(--muted)}
+.card p{margin:0;font-size:16.5px;color:var(--muted)}
+.card button{margin-top:auto;align-self:flex-start;font:700 15px "Bricolage Grotesque",sans-serif;background:none;border:0;color:var(--chili);padding:6px 0;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.ad{border:2px dashed var(--line);border-radius:6px;background:var(--surface);color:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;font:500 15px "Bricolage Grotesque",sans-serif;padding:12px;overflow:hidden}
+.ad>span{font-size:12px;letter-spacing:.04em}
+.ad-top{margin-top:24px;min-height:90px}
+.ad-inline{min-height:250px}
+.ad-bottom{margin:0 0 40px;min-height:90px}
+dialog{width:min(680px,94vw);max-height:90vh;border:0;border-radius:8px;padding:0;background:var(--surface);color:var(--ink)}
+dialog::backdrop{background:rgba(8,20,22,.65)}
+.dh{padding:22px 24px 14px;border-bottom:1px solid var(--line)}
+.dh h2{font-size:34px;line-height:1.05;margin:0 0 6px;letter-spacing:-.02em}
+.db{padding:6px 24px 24px;max-width:62ch}
+.db h3{font-size:19px;margin:22px 0 6px}
+.db ul,.db ol{padding-left:22px;margin:0}
+.db li{margin:4px 0}
+.close{float:right;font:700 15px "Bricolage Grotesque",sans-serif;background:var(--sea);color:var(--on-sea);border:0;border-radius:6px;padding:8px 14px;cursor:pointer}
+.about{background:var(--surface);border-top:1px solid var(--line);padding:44px 0}
+.about h2{font-size:30px;margin:0 0 10px;letter-spacing:-.02em}
+.about p{max-width:60ch;margin:0 0 12px;color:var(--muted)}
+form{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+input{flex:1 1 220px;font:16px "Source Serif 4",serif;padding:11px 14px;border:2px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+form button{font:700 16px "Bricolage Grotesque",sans-serif;background:var(--chili);color:#fff;border:0;border-radius:6px;padding:11px 20px;cursor:pointer}
+#msg{margin:8px 0 0;font:600 15px "Bricolage Grotesque",sans-serif;color:var(--sea);min-height:1.4em}
+footer{padding:24px 0 32px;font:15px "Bricolage Grotesque",sans-serif;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.hero h1{animation:rise .7s ease-out both}@keyframes rise{from{opacity:0;transform:translateY(14px)}}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap nav"><a class="logo sans" href="#">Sabores de Moçambique</a><a class="sans" href="#sobre">Sobre o blog</a></div>
+  <div class="capulana" aria-hidden="true"></div>
+  <div class="wrap hero">
+    <h1>Do Rovuma ao Maputo, à mesa.</h1>
+    <p>Receitas, ingredientes e histórias da cozinha moçambicana: coco, amendoim, piri-piri e muito mar.</p>
+  </div>
+  <div class="capulana" aria-hidden="true"></div>
+</header>
+
+<main class="wrap">
+  <aside class="ad ad-top" aria-label="Publicidade"><span>Publicidade</span><div>Espaço para anúncio · banner 728×90</div></aside>
+  <div class="filters" role="group" aria-label="Filtrar por região" id="filters"></div>
+  <div class="grid" id="grid"></div>
+  <aside class="ad ad-bottom" aria-label="Publicidade"><span>Publicidade</span><div>Espaço para anúncio · banner 728×90</div></aside>
+</main>
+
+<section class="about" id="sobre">
+  <div class="wrap">
+    <h2>Sobre o blog</h2>
+    <p>Um caderno de cozinha de Moçambique: pratos de todos os dias e de festa, das províncias do Norte ao Sul. Cada receita é uma base para adaptares ao teu gosto e à tua panela.</p>
+    <p>Recebe uma receita nova por semana.</p>
+    <form id="nl"><input type="email" id="em" placeholder="O teu email" aria-label="O teu email" required><button type="submit">Subscrever</button></form>
+    <p id="msg" role="status"></p>
+  </div>
+</section>
+<footer><div class="wrap">© 2026 Sabores de Moçambique</div></footer>
+
+<dialog id="dlg" aria-labelledby="dt">
+  <div class="dh"><button class="close" id="cl">Fechar</button><h2 id="dt"></h2><div class="meta" id="dm"></div></div>
+  <div class="db" id="db"></div>
+</dialog>
+
+<script>
+const R=[
+{t:"Matapa",reg:"Centro e Sul",e:"🥬",c:"#1F6B3A",tempo:"1h 30 min",serve:"6 pessoas",
+ d:"Folhas de mandioca piladas, cozidas com amendoim e leite de coco. O prato que ninguém dispensa nas festas.",
+ ing:["500 g de folhas de mandioca piladas","1 chávena de amendoim torrado e moído","400 ml de leite de coco","300 g de camarão descascado","3 dentes de alho","1 cebola","Sal"],
+ pas:["Coze as folhas em água com sal durante 40 minutos, até ficarem macias, e escorre.","Refoga a cebola e o alho. Junta o camarão e salteia 3 minutos.","Adiciona as folhas, o amendoim e o leite de coco.","Deixa apurar em lume brando 30 minutos, mexendo. Serve com arroz ou xima."]},
+{t:"Frango à zambeziana",reg:"Centro",e:"🍗",c:"#B5481C",tempo:"1h 15 min",serve:"4 pessoas",
+ d:"Frango marinado em limão, alho e piri-piri, grelhado e acabado em leite de coco.",
+ ing:["1 frango cortado em pedaços","Sumo de 2 limões","6 dentes de alho","2 piri-piri frescos ou 1 colher de molho","300 ml de leite de coco","Sal e azeite"],
+ pas:["Marina o frango com limão, alho picado, piri-piri e sal durante pelo menos 2 horas.","Grelha ou assa o frango até dourar.","Leva o leite de coco ao lume com a marinada e deixa reduzir 10 minutos.","Rega o frango com o molho e serve com arroz."]},
+{t:"Camarão grelhado com piri-piri",reg:"Sul",e:"🦐",c:"#0F5C63",tempo:"25 min",serve:"4 pessoas",
+ d:"O clássico de Maputo: camarão grande na brasa, com manteiga de alho e piri-piri.",
+ ing:["800 g de camarão tigre","4 dentes de alho","100 g de manteiga","1 colher de molho piri-piri","Sumo de 1 limão","Sal"],
+ pas:["Abre os camarões ao meio e tempera com sal e limão.","Derrete a manteiga com o alho e o piri-piri.","Grelha os camarões 3 a 4 minutos de cada lado, pincelando com a manteiga.","Serve com limão e pão fresco."]},
+{t:"Xima",reg:"Todo o país",e:"🍚",c:"#B88915",tempo:"20 min",serve:"4 pessoas",
+ d:"Papa firme de farinha de milho, a base da refeição. Come-se com as mãos, com caril, peixe ou verduras.",
+ ing:["2 chávenas de farinha de milho","4 chávenas de água","1 pitada de sal"],
+ pas:["Ferve 3 chávenas de água com o sal.","Dissolve a farinha na água restante e deita no tacho, mexendo.","Cozinha em lume brando, mexendo com colher de pau, até a massa desprender do tacho (10 a 15 minutos).","Molda com a colher e serve quente."]},
+{t:"Badjias",reg:"Sul",e:"🧆",c:"#8A5A2B",tempo:"40 min",serve:"20 unidades",
+ d:"Bolinhos fritos de feijão-fradinho, crocantes por fora e macios por dentro. Petisco de rua e de lanche.",
+ ing:["2 chávenas de feijão-fradinho demolhado","1 cebola pequena","1 colher de piri-piri em pó","1 colher de cominho","Sal e óleo para fritar"],
+ pas:["Tira a pele ao feijão e tritura com a cebola até obter uma massa grossa.","Tempera com sal, piri-piri e cominho. Bate bem para ficar leve.","Deita colheradas de massa em óleo bem quente.","Frita até dourar e escorre em papel."]},
+{t:"Caril de caranguejo",reg:"Norte",e:"🦀",c:"#C42B1B",tempo:"1 hora",serve:"4 pessoas",
+ d:"Caranguejo no leite de coco com tomate e especiarias, à moda da costa de Cabo Delgado.",
+ ing:["4 caranguejos limpos","1 cebola e 3 tomates","400 ml de leite de coco","2 dentes de alho","1 colher de caril em pó","Coentros e sal"],
+ pas:["Refoga cebola e alho; junta o tomate e o caril.","Adiciona os caranguejos e o sal; mexe 5 minutos.","Deita o leite de coco, tapa e cozinha 25 minutos.","Finaliza com coentros e serve com arroz ou xima."]}
+];
+const regs=["Todas",...new Set(R.flatMap(r=>r.reg==="Todo o país"?[]:[r.reg]))];
+let cur="Todas";
+const f=document.getElementById("filters"),g=document.getElementById("grid");
+function drawF(){f.innerHTML="";regs.forEach(x=>{const b=document.createElement("button");b.textContent=x;b.setAttribute("aria-pressed",x===cur);b.onclick=()=>{cur=x;drawF();drawG()};f.appendChild(b)})}
+function drawG(){g.innerHTML="";R.filter(r=>cur==="Todas"||r.reg===cur||r.reg==="Todo o país").forEach(r=>{
+ const a=document.createElement("article");a.className="card";
+ a.innerHTML=`<div class="swatch" style="background:${r.c}" aria-hidden="true">${r.e}</div><div class="body"><div class="meta">${r.reg} · ${r.tempo}</div><h2>${r.t}</h2><p>${r.d}</p><button>Ver receita</button></div>`;
+ a.querySelector("button").onclick=()=>open(r);g.appendChild(a)});const ad=document.createElement("aside");ad.className="ad ad-inline";ad.setAttribute("aria-label","Publicidade");ad.innerHTML="<span>Publicidade</span><div>Espaço para anúncio · 300×250</div>";g.insertBefore(ad,g.children[3]||null)}
+const dlg=document.getElementById("dlg");
+function open(r){
+ document.getElementById("dt").textContent=r.t;
+ document.getElementById("dm").textContent=`${r.reg} · ${r.tempo} · ${r.serve}`;
+ document.getElementById("db").innerHTML=`<p>${r.d}</p><h3>Ingredientes</h3><ul>${r.ing.map(i=>`<li>${i}</li>`).join("")}</ul><h3>Preparação</h3><ol>${r.pas.map(i=>`<li>${i}</li>`).join("")}</ol>`;
+ dlg.showModal()}
+document.getElementById("cl").onclick=()=>dlg.close();
+dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()});
+document.getElementById("nl").onsubmit=e=>{e.preventDefault();document.getElementById("msg").textContent="Obrigado! Receberás a próxima receita no teu email.";e.target.reset()};
+drawF();drawG();
+</script>
+</body>
+</html>
